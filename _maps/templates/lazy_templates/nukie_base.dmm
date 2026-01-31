@@ -2100,7 +2100,6 @@
 /area/centcom/syndicate_mothership)
 "wY" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/monitored{
-	chamber_id = "nukiebase";
 	desc = "Has a valve and pump attached to it. Slightly more menacing than Nanotrasen's standard.";
 	dir = 1;
 	name = "syndicate air injector"
@@ -2632,7 +2631,6 @@
 	dwidth = 12;
 	height = 17;
 	name = "syndicate recon outpost";
-	roundstart_template = /datum/map_template/shuttle/infiltrator/basic;
 	shuttle_id = "syndicate_away";
 	width = 23
 	},

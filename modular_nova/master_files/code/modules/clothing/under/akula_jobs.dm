@@ -4,7 +4,7 @@
 #define TAIL_OVERLAY_LAYER 5.9
 
 /obj/item/clothing/under/akula_wetsuit
-	name = "Shoredress wetsuit"
+	name = "\improper Shoredress wetsuit"
 	desc = "The 'Wetworks'-pattern Shoredress is a long-standing template upon which most Azulean 'wetsuits' are made. \
 		This atmospheric exploration suit is a single form-fitting garment, designed to keep wearers comfortable in the harsh environment of dry land; \
 		even sometimes worn underneath orbital suits such as MODs. \n\n\
@@ -67,11 +67,11 @@
 
 /// If the wearer has a compatible tail for the `tail_overlay` variable, render it
 /obj/item/clothing/under/akula_wetsuit/proc/add_tail_overlay(mob/living/carbon/human/user)
-	if(!user.dna.species.mutant_bodyparts["tail"])
+	var/datum/mutant_bodypart/tail = user.dna.mutant_bodyparts[FEATURE_TAIL]
+	if(isnull(tail))
 		return
 
-	var/tail = user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
-	switch(tail)
+	switch(tail.name)
 		if("Akula")
 			tail_overlay = mutable_appearance(TAIL_OVERLAY_DMI, "overlay_akula", -(TAIL_OVERLAY_LAYER))
 		if("Shark")

@@ -34,8 +34,16 @@
 		forge_objectives()
 	if(equip_ert)
 		equipERT()
-	owner?.current.faction |= FACTION_ERT // NOVA EDIT ADDITION
+	owner?.current.add_faction(FACTION_ERT) // NOVA EDIT ADDITION
 	. = ..()
+
+/datum/antagonist/ert/apply_innate_effects(mob/living/mob_override)
+	var/mob/living/carbon/human/officer = mob_override || owner.current
+	ADD_TRAIT(officer, TRAIT_DESENSITIZED, REF(src))
+
+/datum/antagonist/ert/remove_innate_effects(mob/living/mob_override)
+	var/mob/living/carbon/human/officer = mob_override || owner.current
+	REMOVE_TRAIT(officer, TRAIT_DESENSITIZED, REF(src))
 
 /datum/antagonist/ert/get_team()
 	return ert_team
